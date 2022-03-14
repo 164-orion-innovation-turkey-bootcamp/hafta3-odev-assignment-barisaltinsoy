@@ -1,4 +1,4 @@
-<header>Login Page</header>
+<header>Login Form</header>
 
 <form [formGroup]="loginForm" (submit)="onSubmit()">
   <input
@@ -11,7 +11,7 @@
   &&
   loginForm.get('email').touched"
   >Please enter your e-mail as required...</span>
-
+  <br>
   <input
   type = "password"
   [formControlName]="'password'"

@@ -1,4 +1,4 @@
-<header>Register Page</header>
+<header>Register Form</header>
 <form [formGroup]="loginForm" (submit)="onSubmit()">
 
   <label for="name_surname">Name & Surname</label>
@@ -25,7 +25,6 @@
   &&
   loginForm.get('email').touched"
   >Please, check your e-mail adress...</span>
-  <br>
 
   <label for="password">Password</label>
   <div>
