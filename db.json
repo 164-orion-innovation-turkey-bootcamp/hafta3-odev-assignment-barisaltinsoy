@@ -2,45 +2,15 @@
   "users": [
     {
       "user": {
-        "email": "a@a.com",
-        "password": "123"
+        "email": "baris@baris.com",
+        "password": "123abC"
       },
       "id": 1
     },
     {
-      "user": {
-        "email": "b@b.com",
-        "password": "456"
-      },
+      "email": "baris.altinsoy@gmail.com",
+      "password": "1234Abc",
       "id": 2
-    },
-    {
-      "user": {
-        "email": "a@a.com",
-        "password": "123"
-      },
-      "id": 3
-    },
-    {
-      "user": {
-        "email": "b@b.com",
-        "password": "123"
-      },
-      "id": 4
-    },
-    {
-      "user": {
-        "email": "c@c.com",
-        "password": "123"
-      },
-      "id": 5
-    },
-    {
-      "user": {
-        "email": "d@d.com",
-        "password": "123"
-      },
-      "id": 6
     }
   ]
 }

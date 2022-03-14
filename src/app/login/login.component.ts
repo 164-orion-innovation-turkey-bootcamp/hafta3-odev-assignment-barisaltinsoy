@@ -3,43 +3,55 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataserviceService } from '../dataservice.service';
 
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
 
-  loginForm:FormGroup
+export class LoginComponent implements OnInit {
+  loginForm: FormGroup
+  errorMessage: string;
 
   constructor(
     private dataservice: DataserviceService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      // null yerine value verilebilir "" içerisinde
-      user_mail: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, Validators.required)
-    })
+      email: new FormControl(null, [
+        Validators.required,
+        Validators.email]),
+
+      password: new FormControl(null,
+        Validators.required),
+    });
   }
   onSubmit(){
-    const user = {
-      email: this.loginForm.get('user_mail').value,
+    const userInfo = {
+      email: this.loginForm.get('email').value,
       password: this.loginForm.get('password').value
     };
-    if(this.loginForm.valid){
-      this.dataservice.postData(user)
-    }
-     }
-    get(){
-      this.dataservice.getData().subscribe(data => {
-      console.log(data);
-      this.router.navigate(["/dashboard"]);
-    });
 
+    this.dataservice.getData().subscribe(users => {
+      users.forEach(user => {
+        if(userInfo.email == user.email && userInfo.password == user.password){
+          localStorage.setItem('user', JSON.stringify(user));
+          this.loginForm.reset();
+          this.router.navigate(['dashboard']);
+        }else{
+          this.errorMessage = 'No registered subscriber';
+          this.timer();
+        }
+      });
+    })
+  }
+
+  timer(){
+    setTimeout(() =>{
+      this.errorMessage = '';
+    }, 4000)
   }
 }
+

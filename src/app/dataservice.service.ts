@@ -14,8 +14,9 @@ export class DataserviceService {
 
   // user name must not need to be the same with other "user" names
   postData(user){
-    this.http.post('http://localhost:3000/users',{user}).subscribe(response => {console.log(response)} );
+    return this.http.post('http://localhost:3000/users', (user))
   }
+
   getData(){
     return this.http.get('http://localhost:3000/users/').pipe(
       map((responseData) => {
@@ -26,14 +27,7 @@ export class DataserviceService {
           }
         }
         return newArray;
-      })
-    );
-
-    // this.http.get('http://localhost:3000/users').subscribe(responseData => {
-    //   console.log(responseData)})
-    // // .pipe(map((responseData) => {
-    // //   console.log(responseData);
-    // // }))
+      }));
   }
 }
 

@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { GuardService } from './guard.service';
 
-const appRoutes:Routes=[
+const routes: Routes=[
   {
     path:'login',
     component:LoginComponent
@@ -16,16 +16,23 @@ const appRoutes:Routes=[
   },
   {
     path:'dashboard',
-    component:DashboardComponent
+    component:DashboardComponent,
+    canActivate: [GuardService],
+  },
+  {
+    path:'',
+    redirectTo: '/dashboard',
+    pathMatch: 'full'
   }
 ];
 
 
 @NgModule({
-  declarations: [],
   imports: [
-    CommonModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(routes)
+  ],
+  exports:[
+    RouterModule
   ]
 })
 export class AppRoutingModule { }

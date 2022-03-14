@@ -10,6 +10,8 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataserviceService } from './dataservice.service';
 import { HttpClientModule } from '@angular/common/http';
+import { GuardService } from './guard.service';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
-    DataserviceService
+    DataserviceService,
+    GuardService
   ],
   bootstrap: [AppComponent]
 })
