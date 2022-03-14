@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
   ) {}
 
+// Validator usage for form logins
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       email: new FormControl(null, [
@@ -34,6 +35,7 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.get('password').value
     };
 
+    // login process control and error message
     this.dataservice.getData().subscribe(users => {
       users.forEach(user => {
         if(userInfo.email == user.email && userInfo.password == user.password){
@@ -47,11 +49,11 @@ export class LoginComponent implements OnInit {
       });
     })
   }
-
+// to show user invalid attempt by timer
   timer(){
     setTimeout(() =>{
       this.errorMessage = '';
-    }, 4000)
+    }, 10000)
   }
 }
 

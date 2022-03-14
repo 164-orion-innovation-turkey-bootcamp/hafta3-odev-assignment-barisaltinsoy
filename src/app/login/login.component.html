@@ -1,3 +1,4 @@
+<!-- login form info shown to user -->
 <header>Login Form</header>
 
 <form [formGroup]="loginForm" (submit)="onSubmit()">
@@ -6,6 +7,7 @@
   [formControlName]="'email'"
   placeHolder="E-mail"
   >
+  <!-- email input requirements -->
   <span
   *ngIf="!loginForm.get('email').valid
   &&
@@ -16,8 +18,9 @@
   type = "password"
   [formControlName]="'password'"
   placeHolder="Password"
-
-  ><span
+  >
+  <!-- password input requirements -->
+  <span
   *ngIf="!loginForm.get('password').valid
   &&
   loginForm.get('password').touched"
@@ -31,4 +34,3 @@
 
 </form>
 
-<!-- <button (click) = "get()">GET</button> -->

@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GuardService } from './guard.service';
 
+// component integrations
 const routes: Routes=[
   {
     path:'login',
